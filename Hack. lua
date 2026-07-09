@@ -1,1 +1,41 @@
+local gui = Instance.new("ScreenGui", game.CoreGui)
+local f = Instance.new("Frame", gui)
+f.Size, f.Position, f.Draggable, f.BackgroundColor3 = UDim2.new(0,150,0,220), UDim2.new(0,0,0,0), true, Color3.fromRGB(30,30,30)
 
+local function btn(txt, y, cb)
+    local b = Instance.new("TextButton", f)
+    b.Size, b.Position, b.Text, b.BackgroundColor3 = UDim2.new(1,0,0,38), UDim2.new(0,0,0,y), txt, Color3.fromRGB(200,0,0)
+    b.TextColor3, b.Font = Color3.new(1,1,1), Enum.Font.SourceSansBold
+    b.TextSize = 12
+    b.MouseButton1Click:Connect(cb)
+end
+
+btn("🎯 AUTO CATCH", 0, function()
+    while wait(1) do
+        pcall(function()
+            for _,v in pairs(workspace:GetChildren()) do
+                if v:FindFirstChild("Humanoid") and v.Humanoid.Health>0 and game.Players.LocalPlayer.Character then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+                end
+            end
+        end)
+    end
+end)
+
+btn("⚡ AUTO EVOLVE", 42, function()
+    while wait(2) do
+        pcall(function()
+            game.ReplicatedStorage.Remotes.Evolve:FireServer("Evolve","Best")
+        end)
+    end
+end)
+
+btn("💨 SPEED 150", 84, function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 150
+end)
+
+btn("🦘 JUMP 250", 126, function()
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 250
+end)
+
+btn("❌ CLOSE", 168, function() gui:Destroy() end)
