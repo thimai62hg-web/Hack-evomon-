@@ -1,5 +1,4 @@
-loadstring(game:HttpGet("https://raw.githubuserc
-ontent.com/thimaiz/Evomon/main/hack.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/thimaiz/Evomon/main/hack.lua"))()
 local gui = Instance.new("ScreenGui", game.CoreGui)
 local f = Instance.new("Frame", gui)
 f.Size, f.Position, f.Draggable, f.BackgroundColor3 = UDim2.new(0,150,0,200), UDim2.new(0,0,0,0), true, Color3.fromRGB(30,30,30)
